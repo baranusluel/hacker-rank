@@ -24,12 +24,19 @@ def game_simulator(posr, posc, board, usingRows):
                 posr -= 1
             elif dir == "DOWN":
                 posr += 1
-            if (posr > 4 or posc > 4):
+            if (posr > 4 or posc > 4 or isFinished(board)):
                 break
             if board[posr][posc] == "-":
                 board[posr][posc] = "b"
         count += 1
     return count
+
+def isFinished(board):
+    for x in range(5):
+        for y in range(5):
+            if board[y][x] == 'd':
+                return False
+    return True
 
 # Output the state of the board, used for debugging
 def print_board(board):
